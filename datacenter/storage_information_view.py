@@ -7,7 +7,6 @@ def storage_information_view(request):
     visits = Visit.objects.filter(leaved_at=None)
     non_closed_visits = []
     for visit in visits:
-        # if visit.leaved_at is None:
         duration = visit.get_duration(visit)
         worker = {
             'who_entered': visit.passcard.owner_name,
