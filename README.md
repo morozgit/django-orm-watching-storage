@@ -31,9 +31,9 @@ pip3 install -r requirements.txt
 
 Для запуска выполните команду в терминале из папки с проектом
 ```python
-python3 main.py 
+python3 manage.py runserver 0.0.0.0:8000
 ```
-![Результат](https://ltdfoto.ru/images/2023/05/22/terminal.jpg) 
+![Результат](https://ltdfoto.ru/images/2023/05/30/django_terminal.png) 
 
 ## Результат
 Откроется сайт на котором можно посмотреть информацию о посетителях хранилища
