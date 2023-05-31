@@ -1,26 +1,27 @@
 import os
-from dotenv import load_dotenv, find_dotenv
 from environs import Env
 
-# load_dotenv(find_dotenv())
-# language_code = os.environ.get("LANGUAGE_CODE")
-# time_zone = os.environ.get("TIME_ZONE")
-# secret_key = os.environ.get("SECRET_KEY")
-# host = os.environ.get("HOST")
-# password = os.environ.get("PASSWORD")
+
 env = Env()
 env.read_env()
-HOST = env.str("HOST")
-PASSWORD = env.str("PASSWORD")
+DB_HOST = env.str("HOST")
+DB_PASSWORD = env.str("PASSWORD")
+DB_PORT = env.str("PORT")
+DB_NAME = env.str("NAME")
+DB_USER = env.str("DB_USER")
+DB_DEBUG = env.bool('DEBUG')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': HOST,
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        'PASSWORD': PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'DEBUG': DB_DEBUG,
+        'ALLOWED_HOSTS': ALLOWED_HOSTS
     }
 }
 
@@ -28,12 +29,7 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = env.str("SECRET_KEY")
 
-DEBUG = env.bool('DEBUG')
-
 ROOT_URLCONF = 'project.urls'
-
-ALLOWED_HOSTS = ['*']
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
