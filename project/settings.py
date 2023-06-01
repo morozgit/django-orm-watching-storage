@@ -9,8 +9,7 @@ DB_PASSWORD = env.str("PASSWORD")
 DB_PORT = env.str("PORT")
 DB_NAME = env.str("NAME")
 DB_USER = env.str("DB_USER")
-DB_DEBUG = env.bool('DEBUG')
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+
 
 DATABASES = {
     'default': {
@@ -20,14 +19,16 @@ DATABASES = {
         'NAME': DB_NAME,
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
-        'DEBUG': DB_DEBUG,
-        'ALLOWED_HOSTS': ALLOWED_HOSTS
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = env.str("SECRET_KEY")
+
+DEBUG = env.bool('DEBUG', default=False)
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default='127.0.0.1')
 
 ROOT_URLCONF = 'project.urls'
 
